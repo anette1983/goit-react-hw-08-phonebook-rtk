@@ -80,4 +80,15 @@ const authSlice = createSlice({
   // },
 });
 
+// const baseQuery = fetchBaseQuery({
+//   baseUrl: 'https://connections-api.herokuapp.com',
+//   prepareHeaders: (headers, { getState }) => {
+//       const token = getState().auth.token;
+//       if (token) {
+//         headers.set('authorization', Bearer ${token});
+//       } else headers.delete('authorization');
+//       return headers;
+//     },
+// });
+
 export default authSlice.reducer;

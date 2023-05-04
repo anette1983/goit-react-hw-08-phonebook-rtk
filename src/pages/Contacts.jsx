@@ -15,10 +15,12 @@ import girl from '../images/girl-bg.png';
 import { Typography } from '@mui/material';
 import AddContactModal from '../components/AddContactModal.jsx';
 import { selectToken } from 'redux/auth/selectors';
+import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
 
 const Contacts = () => {
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  // const isLoading = useSelector(selectIsLoading);
+  // const error = useSelector(selectError);
+  const [getContacts, result] = useGetContactsQuery();
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
 

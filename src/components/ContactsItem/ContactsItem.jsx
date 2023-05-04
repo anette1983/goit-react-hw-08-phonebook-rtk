@@ -14,14 +14,20 @@ import { deleteContact } from 'redux/contacts/operations';
 
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { useDeleteContactMutation } from 'redux/contacts/contactsSlice';
 
 function ContactsItem({ contact }) {
   const [delId, setDelId] = useState();
   const dispatch = useDispatch();
 
+  const [deleteContact, result] = useDeleteContactMutation();
+  console.log('res :>> ', res);
+
   const handleDelete = id => {
     setDelId(id);
-    dispatch(deleteContact(id));
+    // dispatch(deleteContact(id));
+    deleteContact(id);
+    // диспатч вже не потрібен???
     return toast.success(`Contact deleted successfully`);
   };
 

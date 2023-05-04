@@ -6,9 +6,17 @@ import { useSelector } from 'react-redux';
 import { selectFilteredAndSortedContacts } from 'redux/contacts/selectors';
 
 import ContactsItem from 'components/ContactsItem/ContactsItem';
+import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
 
 function ContactsList() {
-  const filtered = useSelector(selectFilteredAndSortedContacts);
+  const { data: contacts, error, isLoading } = useGetContactsQuery();
+  // const filtered = useSelector(selectFilteredAndSortedContacts);
+  // const sortedPosts = useMemo(() => {
+  //   const sortedPosts = posts.slice();
+  //   // Sort posts in descending chronological order
+  //   sortedPosts.sort((a, b) => b.date.localeCompare(a.date));
+  //   return sortedPosts;
+  // }, [posts]);
 
   return (
     <>
@@ -18,7 +26,7 @@ function ContactsList() {
           maxWidth: 720,
         }}
       >
-        {filtered.map(contact => {
+        {contacts.map(contact => {
           return <ContactsItem key={contact.id} contact={contact} />;
         })}
       </List>
